@@ -1,4 +1,10 @@
-The idea is to use two 1-D arrays dp[] and ans[], where dp[i] represents minimum cost of the line in which arr[i] is the first word and ans[i] represents index of last word present in line in which word arr[i] is the first word. Let k represents limit on number of characters in each line. Suppose for any line l the first word in that line is at index i in arr[]. The minimum cost of that line is stored in dp[i]. The last word in that line is at index j in arr[], where j can vary from i to n. Iterate over all values of j and keep track of number of characters added so far in line l. If number of characters are less than k then find cost of current line with these number of characters. Compare this cost with minimum cost find so far for this line in dp[i] and update dp[i] and ans[i] accordingly. Repeat above procedure for each value of i, 1 <= i <= n. The starting and ending words of each line will be at index i and index ans[i], where next value of i for line l+1 is ans[i] + 1.
+The idea is to use two 1-D arrays dp[] and ans[], where dp[i] represents minimum cost of the line in which arr[i] is the first word and ans[i] 
+represents index of last word present in line in which word arr[i] is the first word. Let k represents limit on number of characters in each line.
+Suppose for any line l the first word in that line is at index i in arr[]. The minimum cost of that line is stored in dp[i]. The last word in that
+line is at index j in arr[], where j can vary from i to n. Iterate over all values of j and keep track of number of characters added so far in line l.
+If number of characters are less than k then find cost of current line with these number of characters. Compare this cost with minimum cost find so far
+for this line in dp[i] and update dp[i] and ans[i] accordingly. Repeat above procedure for each value of i, 1 <= i <= n. The starting and ending words
+of each line will be at index i and index ans[i], where next value of i for line l+1 is ans[i] + 1.
 
 #include <bits/stdc++.h>
 using namespace std;
