@@ -1,0 +1,59 @@
+// take i as centre for i=0 to n
+// odd length i=j
+// even length i,j=i+1
+// find longest palindrome out of all
+
+pair<int,int> length(string s,int t,int e)
+  {
+      int i,j;
+      if(e==0)
+      {
+          i=t;
+          j=t;
+      }
+      else
+      {
+          i=t;
+          j=t+1;
+      }
+      int n=s.length();
+      while(i>=0 && j<n)
+      {
+          if(s[i]==s[j])
+          {
+              i--;
+              j++;
+          }
+          else break;
+      }
+      return make_pair(i+1,j-1);
+  }
+    string longestPalin (string s) {
+        
+        int l=s.length();
+        int ans=0;
+        int t,j;
+        for(int i=0;i<l;i++)
+        {
+            pair<int,int> p=length(s,i,0);
+            pair<int,int> p1=length(s,i,1);
+           
+            int n=p.second-p.first+1;
+            int n1=p1.second-p1.first+1;
+            
+            if(n>ans && n>n1)
+            {
+                t=p.first;
+                j=p.second;
+                ans=n;
+            }
+            else if(n1>n && n1>ans)
+            {
+                t=p1.first;
+                j=p1.second;
+                ans=n1;
+            }
+           
+        }
+        return s.substr(t,ans);
+    }
