@@ -1,4 +1,6 @@
-Given a set of N jobs where each jobi has a deadline and profit associated with it. Each job takes 1 unit of time to complete and only one job can be scheduled at a time. We earn the profit if and only if the job is completed by its deadline. The task is to find the number of jobs done and the maximum profit.
+Given a set of N jobs where each jobi has a deadline and profit associated with it. Each job takes 1 unit of time to complete and only one job can be scheduled at a time.
+We earn the profit if and only if the job is completed by its deadline. The task is to find the number of jobs done and the maximum profit.
+
 N = 4
 Jobs = {(1,4,20),(2,1,10),(3,1,40),(4,1,30)}
 Output:
