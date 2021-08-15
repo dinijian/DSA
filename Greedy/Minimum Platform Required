@@ -1,0 +1,61 @@
+Given arrival and departure times of all trains that reach a railway station. Find the minimum number of platforms required for the railway station so that no train
+is kept waiting.
+Consider that all the trains arrive on the same day and leave on the same day. Arrival and departure time can never be the same
+for a train but we can have arrival time of one train equal to departure time of the other. At any given instance of time,
+same platform can not be used for both departure of a train and arrival of another train. In such cases, we need different platforms.
+
+Input: n = 6 
+arr[] = {0900, 0940, 0950, 1100, 1500, 1800}
+dep[] = {0910, 1200, 1120, 1130, 1900, 2000}
+Output: 3
+Explanation: 
+Minimum 3 platforms are required to 
+safely arrive and depart all trains.
+
+
+.......READ COMMENTS........
+
+int findPlatform(int a[], int d[], int n)
+    {
+        //Multimap is similar to map with an addition that multiple
+        // elements can have same keys.
+        // Cannot use multimap due to this line: we can have arrival time
+        // of one train equal to departure time of the other
+        // Consider example arrival array=[11,13] and departure array=[13,15]
+        // Multimap sorts as 11,'a' 13,'d' 13,'a' and 15,'d' and gives answer 1
+        // But correct answer is 2
+        // Multiset:- sort in increasing order but if first element are same then it insert
+        // on INCREASING ORDER OF SECOND ELEMENT
+//  [{11,a},{13,a},{13,d},{15,d}] so output will be 2( which is Right)
+
+    	multiset<pair<int,char>>m;
+    	for(int i=0;i<n;i++)
+    	{
+    	    m.insert({a[i],'a'});
+    	    m.insert({d[i],'d'});
+    	}
+      
+    	// The first value of element in multimap tells the arrival/departure time
+    	// and second value tells whether it’s arrival or departure represented by
+    	// ‘a’ or ‘d’ respectively. 
+        // If its arrival then do increment by 1 otherwise decrease value by 1. 
+        
+    	int c=0;
+    	int result=0;
+    	for(auto it:m)
+    	{
+    	    
+    	    if(it.second=='a')
+    	    {
+    	        
+    	        c++;
+    	    }
+    	    else
+    	    c--;
+          
+          // Result is max number of required platforms at any given time
+    	    result=max(result,c);
+    	}
+    	return result;
+    }
+};
